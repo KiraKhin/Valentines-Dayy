@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAPPY VALENTINES DAYYY | to: Sam <3</title>
+    <style>
+        body {
+            background-color: pink; /* Add pink background */
+            display: flex;
+            justify-content: center; /* Center align content */
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default margin */
+        }
+        .wrapper {
+            text-align: center; /* Center align content inside wrapper */
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        }
+        .gif {
+            max-width: 100%; /* Ensure the GIF stays within its container */
+        }
+        /* Add hearts */
+        .heart {
+            color: red;
+        }
+        /* Add balloon animation */
+        @keyframes balloon {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        .balloon {
+            animation: balloon 1s infinite;
+        }
+        /* Add falling hearts animation */
+        @keyframes fall {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+        .falling-heart {
+            position: fixed;
+            color: red;
+            animation: fall 5s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Happy Valentine's Day, Sam! <span class="heart">❤️</span></h1>
+        <h2 class="question">Would you wanna be my boyfriend again?</h2>
+        <button id="yesButton">Yes</button>
+        <button id="heartButton">Heart Button</button>
+        <img class="gif" alt="Cute heart animation" src="https://media0.giphy.com/media/t8Lo2mPAzOcmVTgtGe/giphy.gif?cid=6c09b952231uyrnduhdsf4wqnxz03rv9wx3ni5sm0zolrxz3&ep=v1_stickers_related&rid=giphy.gif&ct=s"/>
+        <div class="btn-group">
+            
+        </div>
+        <p>I love you so much hehe <span class="heart">💖</span></p>
+        <p>Thank you for always loving me <span class="heart">💕</span></p>
+        <footer>
+            <p>Forever yours,</p>
+            <p><strong>Patriciaa</strong></p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById("yesButton").addEventListener("click", function() {
+            var balloon = document.createElement("span");
+            balloon.textContent = "🎈";
+            balloon.classList.add("balloon");
+            document.body.appendChild(balloon);
+        });
+
+        document.getElementById("heartButton").addEventListener("click", function() {
+            document.body.innerHTML = '<div id="message">I LOVE YOU <span class="heart">❤️</span></div>';
+            createHearts();
+        });
+
+        function createHearts() {
+            const hearts = ["💖", "💕", "💗", "💓", "💞"];
+            const screenWidth = window.innerWidth;
+
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement("span");
+                const randomHeart = hearts[Math.floor(Math.random() * hearts.length)];
+                const randomX = Math.floor(Math.random() * screenWidth);
+                
+                heart.textContent = randomHeart;
+                heart.classList.add("falling-heart");
+                heart.style.left = randomX + "px";
+                document.body.appendChild(heart);
+            }
+        }
+    </script>
+</body>
+</html>
